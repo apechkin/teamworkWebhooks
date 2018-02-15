@@ -1,0 +1,43 @@
+version: '3'
+services:
+  mqserver:
+    restart: always
+    image: rabbitmq:3-management
+    volumes:
+      - /srv/docker/rabbitmq:/var/lib/rabbitmq/mnesia/
+    network_mode: bridge
+
+  client:
+    network_mode: bridge
+    restart: always
+    env_file:
+      - ./api.env
+    environment:
+      VIRTUAL_HOST: fake.vhost
+      LETSENCRYPT_HOST: fake.vhost
+      LETSENCRYPT_EMAIL: email@fake.vhost
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    links:
+      - mqserver
+    depends_on:
+      - mqserver
+    command: [ "npm", "start" ]
+
+  server:
+    network_mode: bridge
+    restart: always
+    volumes:
+      - /var/apilogs:/usr/src/logs
+    env_file:
+      - ./api.env
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    links:
+      - mqserver
+    depends_on:
+      - client
+      - mqserver
+    command: [ "npm", "start" ]
