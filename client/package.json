@@ -1,14 +1,14 @@
 {
-  "name": "teamwork",
+  "name": "teamwork-integration-client",
   "version": "0.0.1",
-  "description": "Integration with teamwork",
-  "keywords": "teamwork, esb, rabbitmq",
-  "main": "index.js",
+  "description": "Catch teamwork webhooks and execute stored procedure in oracle data base.",
+  "keywords": "teamwork, oracle, rabbitmq",
+  "main": "app/index.js",
   "scripts": {
     "start": "node app/index.js",
     "watch": "nodemon app/index.js"
   },
-  "author": "Anatoliy Pechkin",
+  "author": "Anatoliy Pechkin <anatoliy.pechkin@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "amqplib": "^0.5.2",

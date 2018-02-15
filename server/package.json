@@ -1,5 +1,5 @@
 {
-  "name": "teamwork-integration",
+  "name": "teamwork-integration-server",
   "version": "0.0.1",
   "description": "Catch teamwork webhooks and execute stored procedure in oracle data base.",
   "keywords": "teamwork, oracle, rabbitmq",
