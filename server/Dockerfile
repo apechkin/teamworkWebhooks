@@ -1,4 +1,4 @@
-FROM registry.adv-ms.com/cis/node-oracle-driver
+FROM collinestes/docker-node-oracle
 
 ADD package.json /tmp/package.json
 RUN cd /tmp && npm install
